@@ -35,7 +35,7 @@
 
   <section class="hero">
     <div class="wrap hero__grid">
-      <div>
+      <div class="hero__text">
         <h1>Your IPTV,<br><span class="brand-color">without the bloat.</span></h1>
         <p class="lead">
           <strong>Fred TV</strong> (formerly Open TV) is the ultimate IPTV player for those who seek a bloat-free and
@@ -64,42 +64,21 @@
           </li>
         </ul>
       </div>
-      <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Fred TV screenshots">
-        <div class="carousel__stage">
-          {% for s in x.carousel %}
-          {% if s.platform == "mobile" %}
-          {% set img = resize_image(path=s.file, height=1100, op="fit_height", format="webp", quality=82) %}
-          {% else %}
-          {% set img = resize_image(path=s.file, width=1600, op="fit_width", format="webp", quality=82) %}
-          {% endif %}
-          <figure class="carousel__slide{% if s.platform == " mobile" %} carousel__slide--phone{% endif %}{% if
-            loop.first %} is-active{% endif %}" aria-roledescription="slide">
-            <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ s.alt }}" {% if
-              loop.first %} fetchpriority="high" {% else %} loading="lazy" {% endif %}>
-            {% if s.platform == "desktop" %}
-            <figcaption class="carousel__tag">{{
-              <icon name="monitor" /> }}Desktop
-            </figcaption>
-            {% elif s.platform == "mobile" %}
-            <figcaption class="carousel__tag">{{
-              <icon name="phone" /> }}Mobile
-            </figcaption>
-            {% else %}
-            <figcaption class="carousel__tag">{{
-              <icon name="tv" /> }}Android TV
-            </figcaption>
-            {% endif %}
-          </figure>
-          {% endfor %}
+      {% set laptop = resize_image(path=x.hero_laptop, width=1600, op="fit_width", format="webp", quality=82) %}
+      {% set tv = resize_image(path=x.hero_tv, width=1400, op="fit_width", format="webp", quality=82) %}
+      {% set phone = resize_image(path=x.hero_phone, width=600, op="fit_width", format="webp", quality=82) %}
+      <div class="devices">
+        <div class="dev-tv">
+          <div class="dev-tv__screen"><img src="{{ tv.url }}" width="{{ tv.width }}" height="{{ tv.height }}" alt="Fred TV Mobile on Android TV: home menu"></div>
+          <div class="dev-tv__chin" aria-hidden="true"></div>
+          <div class="dev-tv__stand" aria-hidden="true"></div>
         </div>
-        <div class="carousel__controls">
-          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous screenshot">{{
-            <icon name="arrow-right" class="icon icon--flip" /> }}
-          </button>
-          <div class="carousel__dots" data-carousel-dots></div>
-          <button class="carousel__btn" type="button" data-carousel-next aria-label="Next screenshot">{{
-            <icon name="arrow-right" /> }}
-          </button>
+        <div class="dev-laptop">
+          <div class="dev-laptop__lid"><img src="{{ laptop.url }}" width="{{ laptop.width }}" height="{{ laptop.height }}" alt="Fred TV desktop: channel grid with search, categories and favorites" fetchpriority="high"></div>
+          <div class="dev-laptop__base" aria-hidden="true"></div>
+        </div>
+        <div class="dev-phone">
+          <div class="dev-phone__screen"><img src="{{ phone.url }}" width="{{ phone.width }}" height="{{ phone.height }}" alt="Fred TV Mobile: guided setup"></div>
         </div>
       </div>
     </div>
