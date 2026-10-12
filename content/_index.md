@@ -31,8 +31,8 @@ Due to a trademark dispute, Open TV had to be renamed to Fred TV. Fred is my nam
 """
 
 [[extra.faq]]
-q = "I found a bug or have an idea. Where do I go?"
+q = "I found a bug or have a feature request"
 a = """
-Open an issue on [GitHub](https://github.com/Fredolx/open-tv/issues). All feedback is welcome. If your TV remote or air mouse uses unusual key bindings, open an issue too, and support may be added.
+Open an issue on [GitHub](https://github.com/Fredolx/open-tv/issues). Your feedback is welcome.
 """
 +++
