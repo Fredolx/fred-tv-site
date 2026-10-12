@@ -76,11 +76,11 @@ p { margin: 0; }
   &:active { transform: none; }
 }
 .btn--primary {
-  background: var(--brand); box-shadow: 0 8px 24px -8px rgba(74, 99, 240, 0.7);
+  background: var(--brand);
   &:hover { background: #5a72f5; }
 }
 .btn--donate {
-  background: var(--donate); color: #fff; box-shadow: 0 8px 24px -10px rgba(255, 79, 123, 0.8);
+  background: var(--donate); color: #fff;
   &:hover { background: #ff6489; }
 }
 .btn--ghost {
@@ -104,6 +104,11 @@ p { margin: 0; }
   .bars-strip { height: 2px; opacity: 0.7; }
 }
 .nav__inner { display: flex; align-items: center; gap: 24px; height: 80px; }
+
+.brand-color {
+  color: var(--brand);
+}
+
 .brand {
   display: inline-flex; align-items: center; gap: 10px; color: var(--text);
   font: 700 1.2rem/1 var(--display); letter-spacing: -0.02em;
@@ -207,9 +212,7 @@ p { margin: 0; }
 .appeal__card {
   display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;
   padding: 28px 32px; border-radius: var(--radius);
-  background:
-    linear-gradient(135deg, rgba(255, 79, 123, 0.14), rgba(74, 99, 240, 0.08) 60%),
-    var(--surface);
+  background:rgba(255, 79, 123, 0.14);
   border: 1px solid rgba(255, 79, 123, 0.3);
   h2 { font-size: 1.4rem; margin-bottom: 6px; }
   p { color: var(--muted); }
@@ -241,14 +244,11 @@ p { margin: 0; }
 .features { padding-top: 24px; }
 .features__groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
 .fgroup {
-  position: relative; overflow: hidden; padding: 26px 24px 14px; border-radius: var(--radius);
+  position: relative; overflow: hidden; padding: 20px 24px 14px; border-radius: var(--radius);
   background: var(--surface); border: 1px solid var(--border);
   &::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; }
   h3 { font-size: 1.35rem; }
 }
-.fgroup--all::before { background: var(--b3); }
-.fgroup--mobile::before { background: var(--b5); }
-.fgroup--desktop::before { background: var(--b2); }
 .fgroup__list {
   list-style: none; margin: 16px 0 0; padding: 0;
   li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }

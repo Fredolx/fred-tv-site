@@ -36,7 +36,7 @@
   <section class="hero">
     <div class="wrap hero__grid">
       <div>
-        <h1>Your IPTV,<br><span class="grad">without the bloat.</span></h1>
+        <h1>Your IPTV,<br><span class="brand-color">without the bloat.</span></h1>
         <p class="lead">
           <strong>Fred TV</strong> (formerly Open TV) is the ultimate IPTV player for those who seek a bloat-free and
           ultra-fast browsing and playback experience
@@ -72,7 +72,7 @@
           {% else %}
           {% set img = resize_image(path=s.file, width=1600, op="fit_width", format="webp", quality=82) %}
           {% endif %}
-          <figure class="carousel__slide{% if s.platform == "mobile" %} carousel__slide--phone{% endif %}{% if
+          <figure class="carousel__slide{% if s.platform == " mobile" %} carousel__slide--phone{% endif %}{% if
             loop.first %} is-active{% endif %}" aria-roledescription="slide">
             <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ s.alt }}" {% if
               loop.first %} fetchpriority="high" {% else %} loading="lazy" {% endif %}>
@@ -134,12 +134,13 @@
         <h2 id="features-title">Features</h2>
       </header>
       <div class="features__groups">
-        <article class="fgroup fgroup--all">
+        <article class="fgroup">
           <h3>All platforms</h3>
           <ul class="fgroup__list">
             <li><span class="fgroup__emoji" aria-hidden="true">🗃️</span>M3U files, M3U links and Xtream</li>
             <li><span class="fgroup__emoji" aria-hidden="true">🎬</span>Live TV, movies and series</li>
-            <li><span class="fgroup__emoji" aria-hidden="true">🚅</span>Instant search, setup, updates for even the biggest playlists</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🚅</span>Instant search, setup, updates for even the
+              biggest playlists</li>
             <li><span class="fgroup__emoji" aria-hidden="true">🎊</span>Add multiple subscriptions, search and use all
               of them at once</li>
             <li><span class="fgroup__emoji" aria-hidden="true">🌟</span>Favorites, categories and watch history</li>
@@ -149,7 +150,7 @@
             </li>
           </ul>
         </article>
-        <article class="fgroup fgroup--mobile">
+        <article class="fgroup">
           <h3>Mobile &amp; Android TV</h3>
           <ul class="fgroup__list">
             <li><span class="fgroup__emoji" aria-hidden="true">🧭</span>Simple and intuitive guided setup to add your
@@ -162,7 +163,7 @@
               ExoPlayer on Android and MPV on iOS</li>
           </ul>
         </article>
-        <article class="fgroup fgroup--desktop">
+        <article class="fgroup">
           <h3>Desktop</h3>
           <ul class="fgroup__list">
             <li><span class="fgroup__emoji" aria-hidden="true">🎥</span>Record live TV</li>
