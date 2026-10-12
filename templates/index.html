@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% set x = config.extra %}
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Fred TV home">
+      <img src="{{ get_url(path='img/icon-192.png') }}" alt="" width="52" height="52">
+      <span class="brand__text"><span>Fred TV</span><small>formerly Open TV</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#desktop">Desktop</a>
+      <a href="#mobile">Mobile</a>
+      <a href="#download">Download</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="icon-btn" href="{{ x.repo_desktop }}" target="_blank" rel="noopener" aria-label="Fred TV on GitHub">{{
+        <github /> }}
+      </a>
+      <a class="icon-btn" href="{{ x.bluesky }}" target="_blank" rel="noopener"
+        aria-label="Frédéric Lachapelle on Bluesky">{{
+        <bluesky /> }}
+      </a>
+    </div>
+  </div>
+  <div class="bars-strip" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <h1>Your IPTV,<br><span class="grad">without the bloat.</span></h1>
+        <p class="lead">
+          <strong>Fred TV</strong> (formerly Open TV) is the ultimate IPTV player for those who seek a bloat-free and
+          ultra-fast browsing and playback experience
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#download">{{
+            <icon name="download" /> }}<span>Download</span>
+          </a>
+        </div>
+        <ul class="platforms" aria-label="Platforms">
+          <li>{{
+            <icon name="monitor" /> }}Windows
+          </li>
+          <li>{{
+            <icon name="monitor" /> }}Linux
+          </li>
+          <li>{{
+            <icon name="phone" /> }}Android
+          </li>
+          <li>{{
+            <icon name="phone" /> }}iOS &amp; iPadOS
+          </li>
+          <li>{{
+            <icon name="tv" /> }}Android TV
+          </li>
+        </ul>
+      </div>
+      <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Fred TV screenshots">
+        <div class="carousel__stage">
+          {% for s in x.carousel %}
+          {% if s.platform == "mobile" %}
+          {% set img = resize_image(path=s.file, height=1100, op="fit_height", format="webp", quality=82) %}
+          {% else %}
+          {% set img = resize_image(path=s.file, width=1600, op="fit_width", format="webp", quality=82) %}
+          {% endif %}
+          <figure class="carousel__slide{% if s.platform == "mobile" %} carousel__slide--phone{% endif %}{% if
+            loop.first %} is-active{% endif %}" aria-roledescription="slide">
+            <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ s.alt }}" {% if
+              loop.first %} fetchpriority="high" {% else %} loading="lazy" {% endif %}>
+            {% if s.platform == "desktop" %}
+            <figcaption class="carousel__tag">{{
+              <icon name="monitor" /> }}Desktop
+            </figcaption>
+            {% elif s.platform == "mobile" %}
+            <figcaption class="carousel__tag">{{
+              <icon name="phone" /> }}Mobile
+            </figcaption>
+            {% else %}
+            <figcaption class="carousel__tag">{{
+              <icon name="tv" /> }}Android TV
+            </figcaption>
+            {% endif %}
+          </figure>
+          {% endfor %}
+        </div>
+        <div class="carousel__controls">
+          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous screenshot">{{
+            <icon name="arrow-right" class="icon icon--flip" /> }}
+          </button>
+          <div class="carousel__dots" data-carousel-dots></div>
+          <button class="carousel__btn" type="button" data-carousel-next aria-label="Next screenshot">{{
+            <icon name="arrow-right" /> }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="appeal" id="support" aria-labelledby="appeal-title">
+    <div class="wrap">
+      <div class="appeal__card">
+        <div class="appeal__icon">{{
+          <icon name="heart" /> }}
+        </div>
+        <div>
+          <h2 id="appeal-title">One developer, funded by you</h2>
+          <p>
+            Fred TV is built and maintained by one passionate and dedicated developer. Support me for more updates and
+            more apps to come.
+          </p>
+        </div>
+        <div class="appeal__actions">
+          <a class="btn btn--donate" href="{{ x.donate_github }}" target="_blank" rel="noopener">{{
+            <github /> }}<span>Sponsor on GitHub</span>
+          </a>
+          <a class="btn btn--ghost" href="{{ x.donate_paypal }}" target="_blank" rel="noopener"><span>PayPal</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <header class="section__head">
+        <h2 id="features-title">Features</h2>
+      </header>
+      <div class="features__groups">
+        <article class="fgroup fgroup--all">
+          <h3>All platforms</h3>
+          <ul class="fgroup__list">
+            <li><span class="fgroup__emoji" aria-hidden="true">🗃️</span>M3U files, M3U links and Xtream</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🎬</span>Live TV, movies and series</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🚅</span>Instant search, setup, updates for even the biggest playlists</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🎊</span>Add multiple subscriptions, search and use all
+              of them at once</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🌟</span>Favorites, categories and watch history</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🔄</span>Choose when to refresh (update) your sources
+            </li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🪶</span>Lightweight, no ads, no tracking, open source
+            </li>
+          </ul>
+        </article>
+        <article class="fgroup fgroup--mobile">
+          <h3>Mobile &amp; Android TV</h3>
+          <ul class="fgroup__list">
+            <li><span class="fgroup__emoji" aria-hidden="true">🧭</span>Simple and intuitive guided setup to add your
+              subscriptions and playlists</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">📺</span>Big-screen Android TV layout with full
+              D&#8209;pad navigation</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🌬️</span>Fast & optimized for all devices, including
+              low-end devices</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🧙‍♂️</span>Rock-stable and smooth playback with
+              ExoPlayer on Android and MPV on iOS</li>
+          </ul>
+        </article>
+        <article class="fgroup fgroup--desktop">
+          <h3>Desktop</h3>
+          <ul class="fgroup__list">
+            <li><span class="fgroup__emoji" aria-hidden="true">🎥</span>Record live TV</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🗓️</span>Simple TV guide (EPG) and catch-up</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">📡</span>Re-stream to other devices on your network</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">🛠️</span>Custom channels from YouTube, Twitch and more
+            </li>
+            <li><span class="fgroup__emoji" aria-hidden="true">💾</span>Download movies and catchback VODs to watch
+              offline</li>
+            <li><span class="fgroup__emoji" aria-hidden="true">⚙️</span>Powered by the full mpv client</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="desktop" aria-labelledby="desktop-title">
+    <div class="wrap">
+      <header class="section__head">
+        <h2 id="desktop-title">Fred TV for desktop</h2>
+        <p class="sub">The original app built with Tauri, designed to be an ultra-fast search driven experience</p>
+      </header>
+
+      <div class="gallery" data-gallery>
+        <div class="gallery__stage">
+          {% for s in x.desktop_screens %}
+          {% set img = resize_image(path=s.file, width=1600, op="fit_width", format="webp", quality=82) %}
+          <img class="gallery__img{% if loop.first %} is-active{% endif %}" src="{{ img.url }}" width="{{ img.width }}"
+            height="{{ img.height }}" alt="{{ s.alt }}" loading="lazy" data-index="{{ loop.index0 }}">
+          {% endfor %}
+        </div>
+        {% if x.desktop_screens | length > 1 %}
+        <div class="gallery__thumbs" role="tablist" aria-label="Desktop screenshots">
+          {% for s in x.desktop_screens %}
+          {% set t = resize_image(path=s.file, width=320, op="fit_width", format="webp", quality=70) %}
+          <button class="gallery__thumb{% if loop.first %} is-active{% endif %}" role="tab"
+            aria-selected="{% if loop.first %}true{% else %}false{% endif %}" data-index="{{ loop.index0 }}"
+            aria-label="{{ s.alt }}">
+            <img src="{{ t.url }}" width="{{ t.width }}" height="{{ t.height }}" alt="" loading="lazy">
+          </button>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mobile" aria-labelledby="mobile-title">
+    <div class="wrap">
+      <header class="section__head">
+        <h2 id="mobile-title">Fred TV Mobile, for Android and iOS</h2>
+        <p class="sub">A whole new app made with Flutter, designed from scratch for Android, iPhone, iPad
+          and Android TV.</p>
+      </header>
+
+      <div class="phones">
+        {% for s in x.mobile_screens %}
+        {{
+        <screen file={s.file} caption={s.caption} kind="phone" /> }}
+        {% endfor %}
+      </div>
+
+      <div class="tv">
+        <div>
+          <h3>Also optimized for Android TV</h3>
+          <p>On Android TV, Fred TV Mobile switches to a big-screen layout built for the D-pad</p>
+          <ul class="checks">
+            <li>{{
+              <icon name="check" /> }}Full D-pad navigation
+            </li>
+            <li>{{
+              <icon name="check" /> }}Big-screen layout
+            </li>
+            <li>{{
+              <icon name="check" /> }}Smooth, even on older TVs
+            </li>
+          </ul>
+        </div>
+        {{
+        <screen file={x.tv_screen.file} caption={x.tv_screen.caption} kind="tv" /> }}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="download" aria-labelledby="download-title">
+    <div class="wrap">
+      <header class="section__head">
+        <h2 id="download-title">Download Fred TV</h2>
+        <p class="sub">Buying from a store gets you automatic updates and directly funds development. On Flathub and the
+          AUR it's free.</p>
+      </header>
+      <div class="dl">
+        <article class="dl__col">
+          <h3 class="dl__name">Fred TV <span>for Windows &amp; Linux</span></h3>
+          <div class="badges">
+            {{
+            <badge href={x.store_microsoft} img="badges/microsoft-store.svg" alt="Download from the Microsoft Store" />
+            }}
+            {{
+            <badge href={x.store_flathub} img="badges/flathub.svg" alt="Download on Flathub" /> }}
+            {{
+            <badge href={x.store_aur} img="badges/aur.svg" alt="Get it on the AUR" /> }}
+          </div>
+        </article>
+        <article class="dl__col">
+          <h3 class="dl__name">Fred TV Mobile <span>for iOS, Android &amp; Android TV</span></h3>
+          <div class="badges">
+            {{
+            <badge href={x.store_apple} img="badges/app-store.svg" alt="Download on the App Store" /> }}
+            {{
+            <badge href={x.store_google} img="badges/gplay.png" alt="Get it on Google Play" /> }}
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap wrap--narrow">
+      <header class="section__head">
+        <h2 id="faq-title">Frequently asked questions</h2>
+      </header>
+      <div class="faq__list">
+        {% for item in section.extra.faq %}
+        <details class="faq__item">
+          <summary>{{ item.q }}</summary>
+          <div class="faq__a prose">{{ item.a | markdown | safe }}</div>
+        </details>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <p class="footer__made">Made by <a href="{{ x.bluesky }}" target="_blank" rel="noopener">{{ x.author }}</a> with {{
+      <icon name="heart" class="icon icon--heart" /> }}
+    </p>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="{{ x.repo_desktop }}" target="_blank" rel="noopener">Fred TV on GitHub</a>
+      <a href="{{ x.repo_mobile }}" target="_blank" rel="noopener">Fred TV Mobile on GitHub</a>
+      <a href="{{ x.issues }}" target="_blank" rel="noopener">Report an issue</a>
+      <a href="{{ x.bluesky }}" target="_blank" rel="noopener">Follow Fred on Bluesky</a>
+    </nav>
+    <p class="footer__legal">
+      Fred TV doesn't provide any content. You need your own playlist or provider.
+      Fred TV is an independent open-source project, unrelated to any other software with a similar name.
+      Desktop app licensed GPL-2.0, mobile app licensed AGPL-3.0.
+    </p>
+  </div>
+</footer>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% component icon(name, class="icon") %}
+<svg class="{{ class }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{% if name == "download" %}<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/>
+{% elif name == "tv" %}<rect x="2" y="5" width="20" height="13" rx="2"/><path d="m8 2 4 3 4-3M8 22h8"/>
+{% elif name == "monitor" %}<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+{% elif name == "phone" %}<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/>
+{% elif name == "heart" %}<path d="M19.5 13.6 12 21l-7.5-7.4A5 5 0 1 1 12 6.5a5 5 0 1 1 7.5 7.1Z"/>
+{% elif name == "check" %}<path d="m5 12 5 5L20 7"/>
+{% elif name == "arrow-right" %}<path d="M5 12h14M13 5l7 7-7 7"/>
+{% endif %}
+</svg>
+{% endcomponent %}
+
+{% component github() %}
+<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.8 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5Z"/></svg>
+{% endcomponent %}
+
+{% component bluesky() %}
+<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 2.8C8 4.9 11 9.1 12 11.3c1-2.2 4-6.4 6.8-8.5 2-1.5 5.2-2.6 5.2 1 0 .7-.4 6-.6 6.9-.8 3-3.8 3.7-6.5 3.3 4.7.8 5.9 3.5 3.3 6.1-4.9 5-7-1.3-7.6-2.9l-.6-1.4-.6 1.4c-.6 1.6-2.7 7.9-7.6 2.9-2.6-2.6-1.4-5.3 3.3-6.1-2.7.4-5.7-.3-6.5-3.3C.4 9.8 0 4.5 0 3.8c0-3.6 3.2-2.5 5.2-1Z"/></svg>
+{% endcomponent %}
+
+{% component badge(href, img, alt) %}
+<a class="badge" href="{{ href }}" target="_blank" rel="noopener">
+  <img src="{{ get_url(path=img) }}" alt="{{ alt }}" height="65" loading="lazy">
+</a>
+{% endcomponent %}
+
+{% component screen(file, caption, kind="phone") %}
+{% if kind == "phone" %}
+{% set img = resize_image(path=file, width=600, op="fit_width", format="webp", quality=82) %}
+{% else %}
+{% set img = resize_image(path=file, width=1280, op="fit_width", format="webp", quality=82) %}
+{% endif %}
+<figure class="device device--{{ kind }}">
+  <div class="device__screen">
+    <img src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="Fred TV Mobile: {{ caption }}" loading="lazy">
+  </div>
+  <figcaption>{{ caption }}</figcaption>
+</figure>
+{% endcomponent %}

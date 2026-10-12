@@ -1,0 +1,54 @@
+base_url = "https://tv.fredol.dev"
+
+title = "Fred TV"
+description = "Fred TV is a fast, free and open-source IPTV player for Windows, Linux, macOS, Android, iOS and Android TV. Bring your own M3U or Xtream source."
+default_language = "en"
+
+compile_sass = true
+
+minify_html = true
+
+[extra]
+author = "Frédéric Lachapelle"
+bluesky = "https://bsky.app/profile/fredoldev.bsky.social"
+
+repo_desktop = "https://github.com/Fredolx/open-tv"
+repo_mobile = "https://github.com/Fredolx/fred-tv-mobile"
+issues = "https://github.com/Fredolx/open-tv/issues"
+
+store_microsoft = "https://apps.microsoft.com/detail/9PBWX3RKR1QX?launch=true&mode=mini"
+store_apple = "https://apps.apple.com/ca/app/open-tv-open-source-iptv/id6742751800"
+store_google = "https://play.google.com/store/apps/details?id=dev.fredol.open_tv"
+
+store_flathub = "https://flathub.org/apps/dev.fredol.open-tv"
+store_aur = "https://aur.archlinux.org/packages/open-tv-bin"
+
+donate_github = "https://github.com/sponsors/Fredolx"
+donate_paypal = "https://paypal.me/fredolx"
+
+desktop_screens = [
+  { file = "screenshots/desktop/demo1.png", alt = "Fred TV desktop: channel grid with search, categories and favorites" },
+  { file = "screenshots/desktop/demo2.png", alt = "Fred TV desktop: settings and source management" },
+]
+
+mobile_screens = [
+  { file = "screenshots/mobile/phone-setup.jpg", caption = "Guided setup" },
+  { file = "screenshots/mobile/phone-browse.jpg", caption = "Browse" },
+  { file = "screenshots/mobile/phone-settings.jpg", caption = "Settings" },
+]
+tv_screen = { file = "screenshots/tv/tv-home.png", caption = "Android TV" }
+
+carousel = [
+  { file = "screenshots/desktop/demo1.png", platform = "desktop", alt = "Fred TV desktop: channel grid with search, categories and favorites" },
+  { file = "screenshots/tv/tv-home.png", platform = "tv", alt = "Fred TV Mobile on Android TV: home menu" },
+  { file = "screenshots/mobile/phone-browse.jpg", platform = "mobile", alt = "Fred TV Mobile: channel grid" },
+  { file = "screenshots/tv/tv-movies.png", platform = "tv", alt = "Fred TV Mobile on Android TV: movie list with search" },
+  { file = "screenshots/desktop/demo2.png", platform = "desktop", alt = "Fred TV desktop: settings and source management" },
+  { file = "screenshots/mobile/phone-settings.jpg", platform = "mobile", alt = "Fred TV Mobile: settings and sources" },
+  { file = "screenshots/tv/tv-media-types.png", platform = "tv", alt = "Fred TV Mobile on Android TV: live, VOD and series filters" },
+  { file = "screenshots/mobile/phone-setup.jpg", platform = "mobile", alt = "Fred TV Mobile: choosing a provider type during setup" },
+  { file = "screenshots/tv/tv-settings.png", platform = "tv", alt = "Fred TV Mobile on Android TV: settings" },
+  { file = "screenshots/mobile/phone-welcome.jpg", platform = "mobile", alt = "Fred TV Mobile: welcome screen" },
+  { file = "screenshots/tv/tv-setup.png", platform = "tv", alt = "Fred TV Mobile on Android TV: choosing a provider type" },
+  { file = "screenshots/tv/tv-welcome.png", platform = "tv", alt = "Fred TV Mobile on Android TV: welcome screen" },
+]
